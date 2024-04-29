@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 import seaborn as sns
+import pandas as pd
 
 palette = [
     '#004aad',
@@ -36,3 +37,15 @@ def bar_plot(var,df):
         hue = var,
         **kwargs
     )
+def group_corr(df:pd.DataSerie,by:str,num_vars:list,dep_var:str):
+    df_ =  (
+                df
+                .groupby(by)
+                [num_vars]
+                .corr()
+                .reset_index(names=[by,'feature'])
+                .query('feature == @dep_var')
+                .drop(columns=['feature',dep_var])
+                .set_index(by)
+            )
+    return df_
