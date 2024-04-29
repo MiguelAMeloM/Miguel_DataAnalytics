@@ -37,7 +37,7 @@ def bar_plot(var,df):
         hue = var,
         **kwargs
     )
-def group_corr(df:pd.DataSerie,by:str,num_vars:list,dep_var:str):
+def group_corr(df:pd.DataFrame,by:str,num_vars:list,dep_var:str):
     df_ =  (
                 df
                 .groupby(by)
