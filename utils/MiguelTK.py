@@ -25,6 +25,7 @@ kwargs = {
 def subplots_show():
     plt.subplots_adjust(wspace=.6,hspace=.6)
     plt.show()
+
 cmap = LinearSegmentedColormap.from_list('Mi_cbar',['#AD6300','#f4eedc','#004aad'])
 
 def bar_plot(var,df):
@@ -37,6 +38,7 @@ def bar_plot(var,df):
         hue = var,
         **kwargs
     )
+    
 def group_corr(df:pd.DataFrame,by:str,num_vars:list,dep_var:str):
     df_ =  (
                 df
