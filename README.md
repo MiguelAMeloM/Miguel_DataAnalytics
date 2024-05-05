@@ -19,5 +19,6 @@ Data Analyst**
 - **AirBnB_Analysis** este proyecto se basa en el análisis de los datos de publicaciones de Air BnB en Madrid con el objetivo de optimizar los precios de los apartamentos.
 - **flight_booking** corto estudio de la probabilidad de completar una reserva de un vuelo en una plataforma *online*. 
 - **RRHH** en este proyecto se analizan los datos del departamento de RRHH de una compañía con el objetivo de encontrar los aspectos que tienen mayor impacto en la satisfacción de sus empleados.
+- **campañas_marketing** en esta carpeta se encuentran datos de varias campañas de marketing, comrpas, perfiles de clientes y datos de stock de la compañía. El proyecto consiste en limpieza, normalización e integración de los datos, para analizar los resultados de las campañas de marketing. Así como un pequeño análisis exploratorio de los datos.
 
 <sub>*Los proyectos están enumerados en orden de realización por lo que el nivel de experiencia a la hora de realizar cada proyecto es mayor conforme el proyecto está más abajo en la lista*</sub>
