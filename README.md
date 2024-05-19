@@ -23,5 +23,6 @@ Data Analyst**
     - **análisis** en este cuaderno de trabajo se limpian, normalizan e integran datos de campañas de marketing y facturación de la empresa.
     - **análisis de cohortes** en este cuaderno se realiza un análisis de cohortes con los datos de facturación para estudiar los hábitos de los clientes de la empresa, agrupados por el mes en el que han realizado su primera compra.
 - **ABtesting** en esta carpeta hay datos de una campaña de marketing difundida por correo electrónico, se pretende testear si la personalización de correos aumenta la tasa de conversión. Se visualiza un pequeño análisis en este sentido. 
+- **analisis_ropa_ZARA** en este proyecto hay un script diseñado para recopilar los datos principales de las prendas publicadas en la web de zara.com/es de la sección de señora y caballero, mediante técnicas de web scraping. Con los datos obtenidos se hace un pequeño análisis de las tendencias de moda. 
 
 <sub>*Los proyectos están enumerados en orden de realización por lo que el nivel de experiencia a la hora de realizar cada proyecto es mayor conforme el proyecto está más abajo en la lista*</sub>
