@@ -26,8 +26,7 @@ def get_url(url):
     return 'https://www.zara.com' + url[6:-1]
 
 # %%
-def get_it_list(url):
-    url_ = 'https://www.zara.com/es/es/mujer-nuevo-l1180.html?v1=2352540&regionGroupId=105'
+def get_it_list(url_):
     pagina = 1
     url = f'{url_}&page={pagina}'
     url = get_url(url)
