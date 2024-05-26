@@ -1,4 +1,3 @@
-# %%
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -28,14 +27,32 @@ def get_url(url):
 
 # %%
 def get_it_list(url):
+    url_ = 'https://www.zara.com/es/es/mujer-nuevo-l1180.html?v1=2352540&regionGroupId=105'
+    pagina = 1
+    url = f'{url_}&page={pagina}'
+    url = get_url(url)
     web = requests.get(
         url = url,
         headers = headers
     )
     soup = BeautifulSoup(web.text,features="lxml")
-    lista = [etiqueta.get('href') for etiqueta in soup.find_all('a',class_='product-link product-grid-product__link link')]
-    lista = set(lista)
     semana = soup.find('html').get('id')
+    lista = []
+    l = [etiqueta.get('href') for etiqueta in soup.find_all('a',class_='product-link product-grid-product__link link')]
+    while len(l) > 0:
+        print('.',end='',flush=True)
+        lista.extend(l)
+        pagina += 1
+        url = f'{url_}&page={pagina}'
+        url = get_url(url)
+        web = requests.get(
+            url = url,
+            headers = headers
+        )
+        soup = BeautifulSoup(web.text,features="lxml")
+        l = [etiqueta.get('href') for etiqueta in soup.find_all('a',class_='product-link product-grid-product__link link')]
+    lista = set(lista)
+    print('')
     return list(lista), semana
     
 
@@ -60,7 +77,6 @@ def get_info(url):
 
 # %%
 def generar_df(url):
-    url = get_url(url)
     enlaces, semana = get_it_list(url)
     articulos, precios, descripciones, tallas, colores = [], [], [], [], []
     for enlace in enlaces:
@@ -94,53 +110,14 @@ def generar_df(url):
 
 # %%
 urls = [
-    'https://www.zara.com/es/es/mujer-nuevo-l1180.html?v1=2352540',
-    'https://www.zara.com/es/es/hombre-nuevo-en-coleccion-l6164.html?v1=2351219',
-    'https://www.zara.com/es/es/hombre-lino-l708.html?v1=2351649',
-    'https://www.zara.com/es/es/hombre-camisas-l737.html?v1=2351464',
-    'https://www.zara.com/es/es/hombre-camisetas-l855.html?v1=2351543',
-    'https://www.zara.com/es/es/hombre-polos-l733.html?v1=2351616',
-    'https://www.zara.com/es/es/hombre-pantalones-l838.html?v1=2351278',
-    'https://www.zara.com/es/es/hombre-jeans-l659.html?v1=2351397',
-    'https://www.zara.com/es/es/hombre-bermudas-l592.html?v1=2351786',
-    'https://www.zara.com/es/es/hombre-traje-l808.html?v1=2351572',
-    'https://www.zara.com/es/es/hombre-beachwear-l590.html?v1=2378240',
-    'https://www.zara.com/es/es/man-crochet-l6272.html?v1=2351800',
-    'https://www.zara.com/es/es/hombre-prendas-exterior-l715.html?v1=2378740',
-    'https://www.zara.com/es/es/hombre-sudaderas-l821.html?v1=2351429',
-    'https://www.zara.com/es/es/hombre-punto-l681.html?v1=2351499',
-    'https://www.zara.com/es/es/hombre-sobrecamisas-l3174.html?v1=2351642',
-    'https://www.zara.com/es/es/hombre-blazers-l608.html?v1=2351609',
-    'https://www.zara.com/es/es/man-total-look-l5490.html?v1=2351762',
-    'https://www.zara.com/es/es/hombre-pantalones-cargo-l1780.html?v1=2351761',
-    'https://www.zara.com/es/es/hombre-zapatos-zapatillas-l797.html?v1=2389259',
-    'https://www.zara.com/es/es/hombre-bolsos-l563.html?v1=2352310',
-    'https://www.zara.com/es/es/hombre-accesorios-l537.html?v1=2352367',
-    'https://www.zara.com/es/es/woman-party-l4824.html?v1=2352607',
-    'https://www.zara.com/es/es/mujer-blazers-l1055.html?v1=2352684',
-    'https://www.zara.com/es/es/mujer-vestidos-l1066.html?v1=2352823',
-    'https://www.zara.com/es/es/mujer-tops-l1322.html?v1=2353011',
-    'https://www.zara.com/es/es/mujer-prendas-exterior-chalecos-l1204.html?v1=2352738',
-    'https://www.zara.com/es/es/mujer-faldas-l1299.html?v1=2353253',
-    'https://www.zara.com/es/es/mujer-pantalones-shorts-l1355.html?v1=2353279',
-    'https://www.zara.com/es/es/mujer-punto-l1152.html?v1=2353051',
-    'https://www.zara.com/es/es/mujer-zapatos-l1251.html?v1=2353418',
-    'https://www.zara.com/es/es/mujer-bolsos-l1024.html?v1=2353495',
-    'https://www.zara.com/es/es/mujer-conjuntos-l1061.html?v1=2353302',
-    'https://www.zara.com/es/es/mujer-chaquetas-l1114.html?v1=2352724',
-    'https://www.zara.com/es/es/mujer-punto-l1152.html?v1=2352849',
-    'https://www.zara.com/es/es/mujer-beachwear-l1052.html?v1=2353512',
-    'https://www.zara.com/es/es/mujer-accesorios-l1003.html?v1=2353548',
-    'https://www.zara.com/es/es/mujer-ropa-interior-l4021.html?v1=2353568',
-    'https://www.zara.com/es/es/woman-linen-l2447.html?v1=2354108',
-    'https://www.zara.com/es/es/mujer-precios-especiales-l1314.html?v1=2353821',
-    'https://www.zara.com/es/es/hombre-precios-especiales-l806.html?v1=2352488'
+    'https://www.zara.com/es/es/mujer-nuevo-l1180.html?v1=2352540&regionGroupId=105',
+    'https://www.zara.com/es/es/hombre-nuevo-en-coleccion-l6164.html?v1=2351219&regionGroupId=105'
 ]
 
 # %%
 dfs = []
 for url in urls:
-    print(f'Procesando: {url[:40]}...')
+    print(f'Procesando: {url[:40]}...',end='',flush=True)
     dfs.append(generar_df(url))
 
 # %%
