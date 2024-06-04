@@ -109,7 +109,13 @@ def generar_df(url):
 # %%
 urls = [
     'https://www.zara.com/es/es/mujer-nuevo-l1180.html?v1=2352540&regionGroupId=105',
-    'https://www.zara.com/es/es/hombre-nuevo-en-coleccion-l6164.html?v1=2351219&regionGroupId=105'
+    'https://www.zara.com/es/es/hombre-nuevo-en-coleccion-l6164.html?v1=2351219&regionGroupId=105',
+    'https://www.zara.com/es/es/ninos-bebe-nina-novedades-l127.html?v1=2358224&regionGroupId=110',
+    'https://www.zara.com/es/es/ninos-nina-novedades-l391.html?v1=2357802&regionGroupId=110',
+    'https://www.zara.com/es/es/ninos-bebe-nino-novedades-l43.html?v1=2359254&regionGroupId=110',
+    'https://www.zara.com/es/es/ninos-nino-novedades-l228.html?v1=2360481&regionGroupId=110',
+    'https://www.zara.com/es/es/kids-newborn-new-l6843.html?v1=2359601&regionGroupId=110',
+    'https://www.zara.com/es/es/kids-baby-new-in-l7218.html?v1=2359566&regionGroupId=110'
 ]
 
 # %%
