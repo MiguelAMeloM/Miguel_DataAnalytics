@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import pandas as pd
 
-
+today = pd.Timestamp('today')
 # %%
 headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
@@ -94,7 +94,7 @@ def generar_df(url):
             tallas.append(pd.NA)
             colores.append(pd.NA)
     df = pd.DataFrame({
-        'extracción':pd.Timestamp('today'),
+        'extracción':today,
         'articulo':articulos,
         'precio':precios,
         'descripcion':descripciones,
